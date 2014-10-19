@@ -1,0 +1,42 @@
+629814
+#*Automated Deduction in Geometry: 5th International Workshop, ADG 2004, Gainesville, FL, USA, September 16-18, 2004, Revised Papers (Lecture Notes in Computer ... / Lecture Notes i
+n Artificial Intelligence)
+#@Hoon Hong,Dongming Wang
+#t2006
+#c
+#index0
+
+#*A+ Certification Core Hardware (Text & Lab Manual)
+#@Charles J. Brooks
+#t2003
+#c
+#index1
+
+#*Performance engineering in industry: current practices and adoption challenges
+#@Ahmed E. Hassan,Parminder Flora
+#t2007
+#cProceedings of the 6th international workshop on Software and performance
+#index2
+#!This panel session discusses performance engineering practices in industry. Presentations in the session will explore the use of lightweight techniques and approaches in order to 
+permit the cost effective and rapid adoption of performance modeling research by large industrial software systems.
+
+#*Dude, You Can Do It! How to Build a Sweeet PC
+#@Darrel Creacy,Carlito Vicencio
+#t2005
+#c
+#index3
+#!Whether you're frustrated with current PC offerings (and their inflated prices) or are simply looking for a cool project to take on, building a computer from the ground up using o
+ff-the-shelf parts can offer significant advantages. In these pages, computer dudes Darrel Wayne Creacy and Carlito Vicencio outline those advantages and then show you how to build 
+the computer of your dreams. The pair begins by explaining what components make up a PC and what you need to think about when selecting those components, before helping you determin
+e your needs and suggesting various configurations to fit those uses. Breaking the process down into its simplest terms, the authors provide component lists for a number of differen
+t PC setups: for students, home users, multimedia/home-theater enthusiasts, high-end graphic/video/audio producers, and more. Using plain language and plenty of visual and instructi
+onal aids--photos, illustrations, diagrams, step-by-step directions, and more--the authors ensure that even someone (like you!) who knows nothing about technology can build the perf
+ect PC! On a more personal note, the authors are donating a percentage of their income from this book to the Breast Cancer Research Foundationï¾<U+0096>to thank all the women in the
+ir lives who have supported them and battled the disease. For more information about BCRF, please visit http://www.bcrfcure.org/.
+
+#*What Every Programmer Needs to Know about Security (Advances in Information Security)
+#@Neil Daswani,Anita Kesavan
+#t2006
+#c
+#index4
+

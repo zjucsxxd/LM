@@ -13,3 +13,5 @@
 **/*.txt
 **/*.log
 
+!data/sample.txt
+
