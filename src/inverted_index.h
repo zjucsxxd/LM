@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #ifndef INVERTED_INDEX__H
 #define INVERTED_INDEX__H
 

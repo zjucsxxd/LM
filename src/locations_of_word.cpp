@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #include "locations_of_word.h"
 
 using namespace std;

@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #include "documents.h"
 
 using namespace std;

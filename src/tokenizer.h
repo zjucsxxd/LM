@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #ifndef TOKENIZER__H
 #define TOKENIZER__H
 

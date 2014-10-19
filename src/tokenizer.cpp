@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #include "tokenizer.h"
 
 using namespace std;

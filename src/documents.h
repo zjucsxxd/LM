@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #ifndef DOCUMENTS__H
 #define DOCUMENTS__H
 

@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #ifndef LOCATIONS_OF_WORD__H
 #define LOCATIONS_OF_WORD__H
 

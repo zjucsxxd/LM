@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #include "inverted_index.h"
 
 using namespace std;
