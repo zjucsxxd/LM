@@ -42,8 +42,15 @@ auto cmp = [](pair<size_t, double> const & a, pair<size_t, double> const & b)
 int main(int argc, char const *argv[])
 {
     // 1.
-    const string input_file_name = "../data/sample.txt";
+    string input_file_name = "../data/sample.txt";
+    if (argc == 2) {
+        input_file_name = argv[1];
+    }
     ifstream input_file(input_file_name);
+    if (!input_file.is_open()) {
+        cout << "Error opening file" << endl;
+        exit(EXIT_FAILURE);
+    }
 
     // 2.
     InvertedIndex inverted_index;
