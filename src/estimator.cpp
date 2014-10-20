@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #include <cmath>
 
 #include "estimator.h"
@@ -11,4 +14,8 @@ double Estimator::Score(size_t word_nums_in_doc, size_t doc_size, size_t word_nu
     tmp = (1 / lambda - 1) * (tmp1 / tmp2);
     tmp = log(tmp + 1);
     return tmp;
+}
+
+void Estimator::set_lambda(double f) {
+    lambda = f;
 }

@@ -1,3 +1,6 @@
+// Author: zhangfang
+// Email: thuzhf@gmail.com
+
 #ifndef ESTIMATOR__H
 #define ESTIMATOR__H
 
