@@ -42,7 +42,7 @@ auto cmp = [](pair<size_t, double> const & a, pair<size_t, double> const & b)
 int main(int argc, char const *argv[])
 {
     // 1.
-    const string input_file_name = "../data/outputacm.txt";
+    const string input_file_name = "../data/sample.txt";
     ifstream input_file(input_file_name);
 
     // 2.
