@@ -11,8 +11,8 @@ using namespace std;
 
 class OneLocationOfWord {
 public:
-    int doc_index;
-    int word_nums;
+    size_t doc_index;
+    size_t word_nums;
 
     OneLocationOfWord();
 };
@@ -20,9 +20,10 @@ public:
 class LocationsOfWord {
 private:
     size_t sum; // sums of this words in all docs
+    
+public:
     list<OneLocationOfWord> locations;
 
-public:
     LocationsOfWord();
     void Update(size_t);
     size_t get_sum();

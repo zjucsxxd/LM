@@ -16,7 +16,7 @@ LocationsOfWord::LocationsOfWord() {
 void LocationsOfWord::Update(size_t n) {
     sum += 1;
     bool found = false;
-    for (list<OneLocationOfWord>::iterator it = locations.begin(); it != locations.end(); ++it) {
+    for (auto it = locations.begin(); it != locations.end(); ++it) {
         if ((*it).doc_index == n) {
             (*it).word_nums += 1;
             found = true;

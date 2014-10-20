@@ -6,6 +6,7 @@
 #include <sstream>
 #include <string>
 #include <unordered_map>
+#include <map>
 #include <list>
 #include <array>
 #include <vector>
@@ -17,6 +18,8 @@
 #include "documents.h"
 #include "locations_of_word.h"
 #include "inverted_index.h"
+#include "tokenizer.h"
+#include "estimator.h"
 
 using namespace std;
 
@@ -30,6 +33,11 @@ using namespace std;
 //  1.将各个相关文档及其对应的与query的相关性的得分存入hash表中。
 //6.对得到的hash表排序，然后输出前k(=10)个结果。
 
+auto cmp = [](std::pair<size_t, double> const & a, std::pair<size_t, double> const & b) 
+{ 
+     return a.second != b.second?  a.second > b.second : a.first < b.first;
+};
+
 int main(int argc, char const *argv[])
 {
     // 1.
@@ -37,7 +45,6 @@ int main(int argc, char const *argv[])
     ifstream input_file(input_file_name);
 
     // 2.
-    Documents docs;
     InvertedIndex inverted_index;
 
     string first_line; // 第一行是总的文档数
@@ -53,10 +60,44 @@ int main(int argc, char const *argv[])
         }
         if (tmp.empty())  continue;
         
-        Document doc;
-        doc.Parse(tmp);
-        docs.AddDocument(doc);
-        inverted_index.Update(tmp, docs.get_docs_num() - 1);
+        inverted_index.Update(tmp, inverted_index.GetDocsNum() - 1);
+    }
+
+    // 3.(上面的代码在mac上出现link错误，尚未解决；但是在Ubuntu下提示加入'-std=c++11'，然后便能成功编译。)
+    // 4.
+    string q;
+    while (getline(cin, q)) {
+        Tokenizer tokenizer;
+        vector<string> query;
+        tokenizer.Split(q, query);
+
+        // 5.
+        Estimator estimator;
+        estimator.set_lambda(0.1);
+
+        for (vector<string>::iterator it = query.begin(); it != query.end(); ++it) {
+            map<size_t, double> scores;
+            LocationsOfWord *LOW = inverted_index.get_word_locations(*it);
+            for (auto it2 = LOW->locations.begin(); it2 != LOW->locations.end(); ++it2) {
+                size_t index = it2->doc_index;
+                size_t doc_size = (*inverted_index.get_docs())[index].words_sum;
+                size_t word_nums_in_all_docs = inverted_index.get_word_locations(*it)->get_sum();
+                size_t all_words_sum = inverted_index.GetAllWordsSum();
+                if (scores.count(index) == 0) {
+                    scores[index] = estimator.Score(it2->word_nums, doc_size, word_nums_in_all_docs, all_words_sum);
+                } else {
+                    scores[index] += estimator.Score(it2->word_nums, doc_size, word_nums_in_all_docs, all_words_sum);
+                }
+            }
+
+            // 6.
+            vector<pair<size_t, double> > results(scores.begin(), scores.end());
+            sort(results.begin(), results.end(), cmp);
+            size_t l = (results.size() > 10 ? 10 : results.size());
+            for (size_t i = 0; i < l; ++i) {
+                cout << results[i].first << endl;
+            }
+        }
     }
 
     return 0;
