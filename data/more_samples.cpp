@@ -10,7 +10,8 @@ int main()
 
     int n = 0;
     string s;
-    while (++n <= 100) {
+    const int kmax = 10000;
+    while (++n <= kmax) {
         while (getline(infile, s) && !s.empty()) {
             outfile << s << endl;
         }
