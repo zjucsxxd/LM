@@ -20,7 +20,7 @@ void Document::Parse(vector<string> doc) {
         } else if ((*it).compare(0, 2, "#c") == 0) { // conference
             conference = (*it).substr(2);
         } else if ((*it).compare(0, 2, "#!") == 0) { // abstract
-            //abstract = (*it).substr(2);
+            //abstract = (*it).substr(2); // for memory reason, haven't recorded this
         }
     }
 }
