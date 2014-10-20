@@ -69,9 +69,15 @@ int main(int argc, char const *argv[])
         if (tmp.empty())  continue;
 
         inverted_index.Update(tmp, inverted_index.GetDocsNum()); // index from 0
+
+        static size_t count = 0;
+        if (count % 5000 == 0) {
+            cout << "Index: " << count << endl;
+            ++count;
+        }
     }
 
-    // 3.(上面的代码在mac上出现link错误，尚未解决；但是在Ubuntu下提示加入'-std=c++11'，然后便能成功编译。)
+    // 3.
     // 4.
     string q;
     cout << "Please input your query: ";
