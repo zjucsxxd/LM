@@ -32,7 +32,7 @@ using namespace std;
 //4.循环处理用户的query，首先记录用户的query，并拆分为单词vector。
 //5.使用tf-idf weighting方法，smoothing方法为Jelinek-Mercer method，参数lambda=0.1，使用经过化简的公式。
 //  1.将各个相关文档及其对应的与query的相关性的得分存入hash表中。
-//6.对得到的hash表排序，然后输出前k(=10)个结果。
+//6.对得到的hash表排序，然后输出前k(<=10)个结果。
 
 auto cmp = [](pair<size_t, double> const & a, pair<size_t, double> const & b)
 {
@@ -42,7 +42,7 @@ auto cmp = [](pair<size_t, double> const & a, pair<size_t, double> const & b)
 int main(int argc, char const *argv[])
 {
     // 1.
-    const string input_file_name = "../data/sample.txt";
+    const string input_file_name = "../data/outputacm.txt";
     ifstream input_file(input_file_name);
 
     // 2.
