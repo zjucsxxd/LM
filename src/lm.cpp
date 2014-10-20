@@ -10,6 +10,7 @@
 #include <list>
 #include <array>
 #include <vector>
+#include <algorithm>
 
 #include <cstdio>
 #include <cstdlib>
@@ -33,8 +34,8 @@ using namespace std;
 //  1.将各个相关文档及其对应的与query的相关性的得分存入hash表中。
 //6.对得到的hash表排序，然后输出前k(=10)个结果。
 
-auto cmp = [](std::pair<size_t, double> const & a, std::pair<size_t, double> const & b) 
-{ 
+auto cmp = [](pair<size_t, double> const & a, pair<size_t, double> const & b)
+{
      return a.second != b.second?  a.second > b.second : a.first < b.first;
 };
 
@@ -59,13 +60,14 @@ int main(int argc, char const *argv[])
             tmp.push_back(line);
         }
         if (tmp.empty())  continue;
-        
-        inverted_index.Update(tmp, inverted_index.GetDocsNum() - 1);
+
+        inverted_index.Update(tmp, inverted_index.GetDocsNum()); // index from 0
     }
 
     // 3.(上面的代码在mac上出现link错误，尚未解决；但是在Ubuntu下提示加入'-std=c++11'，然后便能成功编译。)
     // 4.
     string q;
+    cout << "Please input your query: ";
     while (getline(cin, q)) {
         Tokenizer tokenizer;
         vector<string> query;
@@ -74,9 +76,8 @@ int main(int argc, char const *argv[])
         // 5.
         Estimator estimator;
         estimator.set_lambda(0.1);
-
+        map<size_t, double> scores;
         for (vector<string>::iterator it = query.begin(); it != query.end(); ++it) {
-            map<size_t, double> scores;
             LocationsOfWord *LOW = inverted_index.get_word_locations(*it);
             for (auto it2 = LOW->locations.begin(); it2 != LOW->locations.end(); ++it2) {
                 size_t index = it2->doc_index;
@@ -89,15 +90,18 @@ int main(int argc, char const *argv[])
                     scores[index] += estimator.Score(it2->word_nums, doc_size, word_nums_in_all_docs, all_words_sum);
                 }
             }
-
-            // 6.
-            vector<pair<size_t, double> > results(scores.begin(), scores.end());
-            sort(results.begin(), results.end(), cmp);
-            size_t l = (results.size() > 10 ? 10 : results.size());
-            for (size_t i = 0; i < l; ++i) {
-                cout << results[i].first << endl;
-            }
         }
+
+        // 6.
+        vector<pair<size_t, double> > results(scores.begin(), scores.end());
+        sort(results.begin(), results.end(), cmp);
+        size_t l = (results.size() > 10 ? 10 : results.size());
+        cout << "Answer(s): (ranking according to relevance)" << endl;
+        for (size_t i = 0; i < l; ++i) {
+            cout << "Document index: " << results[i].first << endl;
+        }
+
+        cout << endl << "Please input your query: ";
     }
 
     return 0;
