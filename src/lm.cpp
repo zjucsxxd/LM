@@ -71,9 +71,8 @@ int main(int argc, char const *argv[])
         inverted_index.Update(tmp, inverted_index.GetDocsNum()); // index from 0
 
         static size_t count = 0;
-        if (count % 5000 == 0) {
+        if (count++ % 5000 == 0) {
             cout << "Index: " << count << endl;
-            ++count;
         }
     }
 
