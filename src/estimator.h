@@ -1,6 +1,10 @@
 #ifndef ESTIMATOR__H
 #define ESTIMATOR__H
 
+#include <iostream>
+
+using namespace std;
+
 class Estimator {
 private:
     double lambda;
