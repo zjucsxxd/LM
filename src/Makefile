@@ -7,7 +7,7 @@ DEPS =
 OBJ = lm.o inverted_index.o tokenizer.o estimator.o locations_of_word.o documents.o
 
 lm.out: $(OBJ)
-	$(CC) -o lm.out $(OBJ)
+	$(CC) -o lm.out $(OBJ) $(CFLAGS)
 
 lm.o locations_of_word.o: locations_of_word.h
 inverted_index.o: inverted_index.h
