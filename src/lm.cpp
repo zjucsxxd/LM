@@ -16,7 +16,6 @@
 #include <cstdlib>
 #include <cmath>
 
-#include "documents.h"
 #include "locations_of_word.h"
 #include "inverted_index.h"
 #include "tokenizer.h"
