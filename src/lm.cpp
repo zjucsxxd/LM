@@ -95,7 +95,7 @@ int main(int argc, char const *argv[])
         Estimator estimator;
         estimator.set_lambda(0.1);
         map<size_t, double> scores;
-        for (vector<string>::iterator it = query.begin(); it != query.end(); ++it) {
+        for (auto it = query.begin(); it != query.end(); ++it) {
             LocationsOfWord *LOW = inverted_index.get_word_locations(*it);
             for (auto it2 = LOW->locations.begin(); it2 != LOW->locations.end(); ++it2) {
                 size_t index = it2->doc_index;
