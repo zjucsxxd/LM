@@ -15,6 +15,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cmath>
+#include <ctime>
 
 #include "locations_of_word.h"
 #include "inverted_index.h"
@@ -59,6 +60,9 @@ int main(int argc, char const *argv[])
     getline(input_file, first_line);
     docs_num = atoi(first_line.data());
 
+    time_t e_start_time, e_end_time;
+    e_start_time = time(NULL);
+
     while (!input_file.eof()) {
         vector<string> tmp;
         string line;
@@ -70,10 +74,13 @@ int main(int argc, char const *argv[])
         inverted_index.Update(tmp, inverted_index.GetDocsNum()); // index from 0
 
         static size_t count = 0;
-        if (count++ % 5000 == 0) {
+        if (count++ % 1000 == 0) {
             cout << "Index: " << count - 1 << endl;
         }
     }
+
+    e_end_time = time(NULL);
+    cout << "Time consumed: " << e_end_time - e_start_time << "s" << endl;
 
     // 3.
     // 4.
