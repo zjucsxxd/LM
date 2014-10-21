@@ -1,19 +1,17 @@
 // Author: zhangfang
 // Email: thuzhf@gmail.com
 
-#include <algorithm>
-
 #include "inverted_index.h"
 
 using namespace std;
 
-char ToLower(char c) {
-    char tmp;
-    if (c >= 'A' && c <= 'Z') {
-        tmp = c - ('A' - 'a');
-        return tmp;
-    } else {
-        return c;
+void StringToLower(string &s) {
+    size_t l = s.size();
+    size_t diff = 'A' - 'a';
+    for (int i = 0; i < l; ++i) {
+        if (s[i] >= 'A' && s[i] <= 'Z') {
+            s[i] -= diff;
+        }
     }
 }
 
@@ -32,7 +30,7 @@ void InvertedIndex::Update(vector<string> doc, size_t n) {
             d.words_sum += tokens.size();
             for (auto it2 = tokens.begin(); it2 != tokens.end(); ++it2) {
                 string tmp = *it2;
-                transform(tmp.begin(), tmp.end(), tmp.begin(), ToLower);
+                StringToLower(tmp);
                 inverted_index[tmp].Update(n);
             }
         }
@@ -41,7 +39,7 @@ void InvertedIndex::Update(vector<string> doc, size_t n) {
 }
 
 LocationsOfWord * InvertedIndex::get_word_locations(string w) {
-    transform(w.begin(), w.end(), w.begin(), ToLower);
+    StringToLower(w);
     return &inverted_index[w];
 }
 
