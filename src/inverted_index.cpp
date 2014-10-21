@@ -41,6 +41,7 @@ void InvertedIndex::Update(vector<string> doc, size_t n) {
 }
 
 LocationsOfWord * InvertedIndex::get_word_locations(string w) {
+    transform(w.begin(), w.end(), w.begin(), ToLower);
     return &inverted_index[w];
 }
 
